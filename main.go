@@ -14,6 +14,9 @@ const (
 	Majs      = "majs"
 	Paprika   = "paprika"
 	Makaroner = "makaroner"
+	Hona      = "höna"
+	Kott      = "kött"
+	Vitsas    = "vit sås"
 )
 
 var ingredients []string
@@ -21,7 +24,7 @@ var meal map[string]struct{}
 
 func init() {
 	rand.Seed(time.Now().UnixNano())
-	ingredients = append(ingredients, Svamp, Majs, Paprika, Makaroner)
+	ingredients = append(ingredients, Svamp, Majs, Paprika, Makaroner, Hona, Kott, Vitsas)
 	meal = make(map[string]struct{})
 }
 
