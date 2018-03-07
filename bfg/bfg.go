@@ -8,13 +8,14 @@ import (
 
 // The ingredients for a true exit fragger experience
 const (
-	Svamp     = "svamp"
-	Majs      = "majs"
-	Paprika   = "paprika"
-	Makaroner = "makaroner"
-	Hona      = "höna"
-	Kott      = "kött"
-	Vitsas    = "vit sås"
+	Svamp     = "Svamp"
+	Majs      = "Majs"
+	Paprika   = "Paprika"
+	Makaroner = "Makaroner"
+	Hona      = "Höna"
+	Kott      = "Kött"
+	Vitsas    = "Vit sås"
+	TortillaP = "Tortilla plättar"
 )
 
 var ingredients []string
@@ -28,7 +29,7 @@ type Meal struct {
 // SetUp sets up by populating the ingredients slice etc.
 func SetUp() {
 	rand.Seed(time.Now().UnixNano())
-	ingredients = append(ingredients, Svamp, Majs, Paprika, Makaroner, Hona, Kott, Vitsas)
+	ingredients = append(ingredients, Svamp, Majs, Paprika, Makaroner, Hona, Kott, Vitsas, TortillaP)
 	meal = make(map[string]struct{})
 }
 
