@@ -14,7 +14,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "static/index.html")
 }
 
-func addIngredient(w http.ResponseWriter, r *http.Request) {
+func getIngredients(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	meal := bfg.Generate()
 	if err := json.NewEncoder(w).Encode(meal); err != nil {
@@ -35,7 +35,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	mux.HandleFunc("/", index)
-	mux.HandleFunc("/add", addIngredient)
+	mux.HandleFunc("/ingredients", getIngredients)
 	handler := cors.Default().Handler(mux)
 	log.Fatal(http.ListenAndServe(":8080", handler))
 }
