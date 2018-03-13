@@ -14,16 +14,19 @@ class App extends Component {
   }
 
   getMeal() {
-    fetch(window.location.origin + '/add', {mode: 'cors'})
-      .then(res => res.json())
-      .then(data => {
-        if (data) {
-          this.setState({
-            meal: data.ingredients
-          })
-        }
-      })
-      .catch(error => console.log(error));
+    return fetch(window.location.origin + '/add', {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data) {
+        this.setState({
+          meal: data.ingredients
+        })
+      }
+    })
+    .catch(error => console.log(error));
   }
 
   render() {

@@ -11,7 +11,7 @@ import (
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "static/index.html")
+	http.ServeFile(w, r, "dist/index.html")
 }
 
 func getIngredients(w http.ResponseWriter, r *http.Request) {
@@ -32,7 +32,7 @@ func main() {
 	}
 	log.Println("listening on port 8080...")
 	mux := http.NewServeMux()
-	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("dist/static"))))
 	mux.HandleFunc("/", index)
 	mux.HandleFunc("/add", getIngredients)
 	handler := cors.Default().Handler(mux)
