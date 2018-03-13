@@ -1,4 +1,4 @@
-package bfg
+package generator
 
 import (
 	"math/rand"
@@ -15,11 +15,13 @@ const (
 	Hona      = "Höna"
 	Kott      = "Kött"
 	Vitsas    = "Vit sås"
-	TortillaP = "Tortilla plättar"
+	TortillaP = "Tortillaplättar"
 )
 
-var ingredients []string
-var meal map[string]struct{}
+var (
+	ingredients []string
+	meal        map[string]struct{}
+)
 
 // Meal is the struct to be JSON encoded and sent to the client
 type Meal struct {
@@ -30,15 +32,12 @@ type Meal struct {
 func SetUp() {
 	rand.Seed(time.Now().UnixNano())
 	ingredients = append(ingredients, Svamp, Majs, Paprika, Makaroner, Hona, Kott, Vitsas, TortillaP)
-	meal = make(map[string]struct{})
 }
 
 // Generate returns a struct of type Meal, which contains a sorted slice.
 func Generate() Meal {
 	var dish Meal
-	if len(meal) >= 4 {
-		meal = make(map[string]struct{})
-	}
+	meal = make(map[string]struct{})
 	for {
 		if len(meal) >= 4 {
 			for ingr := range meal {
@@ -46,7 +45,6 @@ func Generate() Meal {
 			}
 			break
 		}
-
 		ingredient := ingredients[rand.Intn(len(ingredients))]
 		if _, ok := meal[ingredient]; !ok {
 			meal[ingredient] = struct{}{}
