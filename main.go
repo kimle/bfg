@@ -35,7 +35,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	mux.HandleFunc("/", index)
-	mux.HandleFunc("/ingredients", getIngredients)
+	mux.HandleFunc("/add", getIngredients)
 	handler := cors.Default().Handler(mux)
 	log.Fatal(http.ListenAndServe(":8080", handler))
 }
