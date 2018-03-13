@@ -18,7 +18,7 @@ func getIngredients(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	meal := bfg.Generate()
 	if err := json.NewEncoder(w).Encode(meal); err != nil {
-        log.Printf("could not encode meal: %v", err)
+		log.Printf("could not encode meal: %v", err)
 	}
 }
 
@@ -30,7 +30,6 @@ func main() {
 	if err := mime.AddExtensionType(".css", "text/css; charset=utf-8"); err != nil {
 		log.Println(err)
 	}
-
 	log.Println("listening on port 8080...")
 	mux := http.NewServeMux()
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
