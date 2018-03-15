@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+.App-meek {
+  text-align: center;
+  align-items: center;
+  margin-top: 200px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -20,6 +26,10 @@
 
 .App-intro {
   font-size: large;
+}
+
+.rightIcon {
+  margin-left: 8px;
 }
 
 @keyframes App-logo-spin {
